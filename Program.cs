@@ -18,6 +18,7 @@ namespace DemoAPI
             });
 
             builder.Services.AddScoped<IStudentRepository, StudentRepository>();
+            builder.Services.AddScoped<IClassRoomRepository, ClassRoomRepository>();
 
             // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
             //builder.Services.AddOpenApi();

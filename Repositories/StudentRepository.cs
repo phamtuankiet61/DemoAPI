@@ -1,6 +1,8 @@
-﻿using Microsoft.EntityFrameworkCore;
-using DemoAPI.Data;
+﻿using DemoAPI.Data;
+using DemoAPI.DTOs.Student;
 using DemoAPI.Models;
+using Microsoft.EntityFrameworkCore;
+using DemoAPI.DTOs.Student;
 
 namespace DemoAPI.Repositories
 {
@@ -17,6 +19,25 @@ namespace DemoAPI.Repositories
         {
             return await _context.Students.ToListAsync();
         }
+
+        //public async Task<IEnumerable<StudentDto>> GetAllStudentsAsync()
+        //{
+        //    return await _context.Students
+        //        .Include(s => s.ClassRoom) // Nhớ Include để lấy thông tin ClassRoom
+        //        .Select(student => new StudentDto
+        //        {
+        //            Id = student.Id,
+        //            FullName = student.FullName,
+        //            Age = student.Age,
+        //            DateOfBirth = student.DateOfBirth,
+        //            Email = student.Email,
+        //            Address = student.Address,
+        //            GPA = student.GPA,
+        //            ClassRoomId = student.ClassRoomId,
+        //            ClassRoomName = student.ClassRoom != null ? student.ClassRoom.Name : "Chưa có lớp"
+        //        })
+        //        .ToListAsync();
+        //}
 
         public async Task<Student?> GetByIdAsync(int id)
         {
