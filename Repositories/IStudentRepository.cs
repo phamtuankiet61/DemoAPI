@@ -15,5 +15,8 @@ namespace DemoAPI.Repositories
         Task DeleteAsync(int id);
 
         Task SaveChangesAsync();
+
+        Task<(List<Student> Items, int TotalCount)> GetPagedAsync(int pageNumber, int pageSize);
+
     }
 }

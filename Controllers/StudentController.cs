@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using DemoAPI.DTOs;
 using DemoAPI.DTOs.Student;
 using DemoAPI.Models;
 using DemoAPI.Repositories;
@@ -27,6 +28,21 @@ namespace DemoAPI.Controllers
 
             return Ok(studentDtos);
         }
+
+        //LẤY DANH SÁCH HỌC SINH CÓ PHÂN TRANG (Ví dụ: api/student?pageNumber=1&pageSize=10)
+        //[HttpGet]
+        //public async Task<ActionResult<PagedResultDto<StudentDto>>> GetAll([FromQuery] int pageNumber = 1, [FromQuery] int pageSize = 10)
+        //{
+        //    if (pageNumber < 1) pageNumber = 1;
+        //    if (pageSize < 1) pageSize = 10;
+
+        //    var (students, totalCount) = await _repository.GetPagedAsync(pageNumber, pageSize);
+
+        //    var studentDtos = _mapper.Map<List<StudentDto>>(students);
+        //    var result = new PagedResultDto<StudentDto>(studentDtos, totalCount, pageNumber, pageSize);
+
+        //    return Ok(result);
+        //}
 
         [HttpGet("{id}")]
         public async Task<ActionResult<StudentDto>> GetById(int id)

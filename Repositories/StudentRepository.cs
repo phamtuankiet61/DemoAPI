@@ -70,5 +70,20 @@ namespace DemoAPI.Repositories
         {
             await _context.SaveChangesAsync();
         }
+
+        public async Task<(List<Student> Items, int TotalCount)> GetPagedAsync(int pageNumber, int pageSize)
+        {
+            var query = _context.Students.Include(s => s.ClassRoom).AsNoTracking();
+
+            var totalCount = await query.CountAsync();
+
+            // Phân trang dữ liệu trực tiếp dưới database
+            var items = await query
+                .Skip((pageNumber - 1) * pageSize)
+                .Take(pageSize)
+                .ToListAsync();
+
+            return (items, totalCount);
+        }
     }
 }
